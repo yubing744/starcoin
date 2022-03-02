@@ -214,7 +214,7 @@ default-members = [
 panic = "unwind"
 
 [profile.release]
-debug = false
+debug = true
 panic = "unwind"
 debug-assertions = false
 codegen-units = 1

@@ -1,6 +1,8 @@
 // Copyright (c) The Starcoin Core Contributors
 // SPDX-License-Identifier: Apache-2.0
 use anyhow::Result;
+use jemalloc_ctl::{Access, AsName};
+use jemallocator;
 use scmd::error::CmdError;
 use scmd::CmdContext;
 use starcoin_cmd::*;
@@ -11,6 +13,24 @@ use starcoin_node_api::errors::NodeStartError;
 use starcoin_rpc_client::RpcClient;
 use std::sync::Arc;
 use std::time::Duration;
+
+#[global_allocator]
+static ALLOC: jemallocator::Jemalloc = jemallocator::Jemalloc;
+
+const PROF_ACTIVE: &'static [u8] = b"prof.active\0";
+const PROF_DUMP: &'static [u8] = b"prof.dump\0";
+const PROFILE_OUTPUT: &'static [u8] = b"profile.out\0";
+
+fn set_prof_active(active: bool) {
+    let name = PROF_ACTIVE.name();
+    name.write(active).expect("Should succeed to set prof");
+}
+
+fn dump_profile() {
+    let name = PROF_DUMP.name();
+    name.write(PROFILE_OUTPUT)
+        .expect("Should succeed to dump profile")
+}
 
 /// This exit code means is that the node failed to start and required human intervention.
 /// Node start script can do auto task when meet this exist code.
@@ -114,6 +134,7 @@ fn run() -> Result<()> {
 }
 
 fn main() {
+    set_prof_active(true);
     match run() {
         Ok(()) => {}
         Err(e) => {
@@ -155,4 +176,6 @@ fn main() {
             }
         }
     }
+    set_prof_active(false);
+    dump_profile();
 }

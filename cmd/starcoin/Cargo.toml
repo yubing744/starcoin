@@ -56,6 +56,13 @@ starcoin-abi-decoder = {path = "../../abi/decoder"}
 starcoin-abi-resolver = {path = "../../abi/resolver"}
 starcoin-abi-types = {path = "../../abi/types"}
 move-command-line-common = {git = "https://github.com/starcoinorg/diem", rev="59f3187dabfcd4fdf5f1a3d0248ca67a27aba498" }
+jemallocator = "0.3.2"
+jemalloc-ctl = "0.3.2"
+
+[dependencies.jemalloc-sys]
+version = "0.3.2"
+features = ["stats", "profiling", "unprefixed_malloc_on_supported_platforms"]
+
 
 [dev-dependencies]
 test-helper= {path = "../../test-helper"}
