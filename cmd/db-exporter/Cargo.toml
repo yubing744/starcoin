@@ -21,10 +21,8 @@ starcoin-executor = {path = "../../executor"}
 starcoin-consensus = { path = "../../consensus" }
 starcoin-transaction-builder = { path = "../../vm/transaction-builder"}
 starcoin-account-api = { path = "../../account/api"}
-#starcoin-state-tree = {path = "../../state/state-tree"}
 starcoin-accumulator = { path = "../../commons/accumulator", package = "starcoin-accumulator" }
 bcs-ext = { package="bcs-ext", path = "../../commons/bcs_ext" }
-#forkable-jellyfish-merkle = {path = "../../commons/forkable-jellyfish-merkle"}
 structopt = "~0.3"
 csv = "~1"
 serde = "~1"
