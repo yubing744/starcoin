@@ -182,3 +182,52 @@ pub fn test_repeat_commit() -> Result<()> {
     assert_eq!(root_hash1, root_hash2);
     Ok(())
 }
+
+#[test]
+pub fn test_compact_flush() -> Result<()> {
+    let s = MockStateNodeStore::new();
+    let state = StateTree::new(Arc::new(s), None);
+    assert_eq!(state.root_hash(), *SPARSE_MERKLE_PLACEHOLDER_HASH);
+
+    let hash_value = HashValue::random().into();
+
+    let account1 = update_nibble(&hash_value, 0, 1);
+    let account1 = update_nibble(&account1, 2, 2);
+    state.put(account1, vec![0, 0, 0]);
+    let _new_root_hash = state.commit()?;
+
+    let account3 = update_nibble(&account1, 2, 3);
+    for (k, v) in vec![(account1, vec![1, 1, 0]), (account3, vec![0, 0, 0])] {
+        state.put(k, v);
+    }
+    let new_root_hash = state.commit()?;
+
+    state.flush()?;
+    assert_eq!(state.root_hash(), new_root_hash);
+    assert_eq!(state.get(&account1)?, Some(vec![1, 1, 0]));
+    assert_eq!(state.get(&account3)?, Some(vec![0, 0, 0]));
+    assert_eq!(state.get(&update_nibble(&account1, 2, 10))?, None);
+
+    let s1 = MockStateNodeStore::new();
+    let state1 =  StateTree::new(Arc::new(s1), None);
+    assert_eq!(state1.root_hash(), *SPARSE_MERKLE_PLACEHOLDER_HASH);
+
+    let hash_value1 = hash_value.clone();
+    let account11 = update_nibble(&hash_value1, 0, 1);
+    let account11 = update_nibble(&account11, 2, 2);
+    state.put(account11, vec![0, 0, 0]);
+    let _new_root_hash1 = state1.commit()?;
+    state1.flush()?;
+
+    let account31 = update_nibble(&account11, 2, 3);
+    for (k, v) in vec![(account11, vec![1, 1, 0]), (account31, vec![0, 0, 0])] {
+        state1.put(k, v);
+    }
+    let new_root_hash1 = state1.commit()?;
+
+    state1.flush()?;
+    assert_eq!(state1.root_hash(), new_root_hash1);
+    assert_eq!(new_root_hash, new_root_hash1);
+
+    Ok(())
+}

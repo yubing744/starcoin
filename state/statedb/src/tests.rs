@@ -1,5 +1,10 @@
 use super::*;
+use starcoin_config::RocksdbConfig;
 use starcoin_state_tree::mock::MockStateNodeStore;
+use starcoin_storage::cache_storage::CacheStorage;
+use starcoin_storage::db_storage::DBStorage;
+use starcoin_storage::storage::StorageInstance;
+use starcoin_storage::Storage;
 use starcoin_types::write_set::{WriteOp, WriteSet, WriteSetMut};
 use starcoin_vm_types::account_config::AccountResource;
 use starcoin_vm_types::move_resource::MoveResource;
@@ -12,6 +17,20 @@ fn to_write_set(access_path: AccessPath, value: Vec<u8>) -> WriteSet {
     WriteSetMut::new(vec![(access_path, WriteOp::Value(value))])
         .freeze()
         .expect("freeze write_set must success.")
+}
+
+fn to_write_set2(
+    access_path1: AccessPath,
+    value1: Vec<u8>,
+    access_path2: AccessPath,
+    value2: Vec<u8>,
+) -> WriteSet {
+    WriteSetMut::new(vec![
+        (access_path1, WriteOp::Value(value1)),
+        (access_path2, WriteOp::Value(value2)),
+    ])
+    .freeze()
+    .expect("freeze write_set must success.")
 }
 
 #[test]
@@ -98,6 +117,74 @@ fn test_state_version() -> Result<()> {
     let chain_state_db_ori = ChainStateDB::new(storage, Some(old_root));
     let old_state2 = chain_state_db_ori.get(&access_path)?.unwrap();
     assert_eq!(old_state, old_state2);
+
+    Ok(())
+}
+
+#[test]
+fn test_state_compaction_flush_version() -> Result<()> {
+    let access_path1 = AccessPath::random_resource();
+    let state1 = random_bytes();
+    let access_path2 = AccessPath::random_resource();
+    let state2 = random_bytes();
+
+    let tmpdir1 = starcoin_config::temp_dir();
+    let storage1 = Storage::new(StorageInstance::new_cache_and_db_instance(
+        CacheStorage::new(None),
+        DBStorage::new(tmpdir1.path(), RocksdbConfig::default(), None).unwrap(),
+    ))
+    .unwrap();
+    let chain_state_db1 = ChainStateDB::new(Arc::new(storage1), None);
+    chain_state_db1.apply_write_set(to_write_set2(
+        access_path1.clone(),
+        state1.clone(),
+        access_path2.clone(),
+        state2.clone(),
+    ))?;
+    chain_state_db1.commit()?;
+    chain_state_db1.flush()?;
+    let db1_hash = chain_state_db1.state_root();
+    println!("db1_hash {}", db1_hash);
+
+    let tmpdir2 = starcoin_config::temp_dir();
+    let storage2 = Storage::new(StorageInstance::new_cache_and_db_instance(
+        CacheStorage::new(None),
+        DBStorage::new(tmpdir2.path(), RocksdbConfig::default(), None).unwrap(),
+    ))
+    .unwrap();
+    let chain_state_db2 = ChainStateDB::new(Arc::new(storage2), None);
+    chain_state_db2.apply_write_set(to_write_set(access_path1.clone(), state1.clone()))?;
+    chain_state_db2.commit()?;
+    chain_state_db2.flush()?;
+    chain_state_db2.apply_write_set(to_write_set(access_path2.clone(), state2.clone()))?;
+    chain_state_db2.commit()?;
+    chain_state_db2.flush()?;
+    let db2_hash = chain_state_db2.state_root();
+    println!("db2_hash {}", db2_hash);
+    assert_eq!(db1_hash, db2_hash);
+
+    let state_with_proof11 = chain_state_db1.get_with_proof(&access_path1)?;
+    println!("state_with_proof11 {:?}", state_with_proof11);
+    state_with_proof11
+        .proof
+        .verify(db1_hash, access_path1.clone(), state_with_proof11.state.as_deref())?;
+
+    let state_with_proof12 = chain_state_db1.get_with_proof(&access_path2)?;
+    println!("state_with_proof12 {:?}", state_with_proof12);
+    state_with_proof12
+        .proof
+        .verify(db1_hash, access_path2.clone(), state_with_proof12.state.as_deref())?;
+
+    let state_with_proof21 = chain_state_db2.get_with_proof(&access_path1)?;
+    println!("state_with_proof21 {:?}", state_with_proof21);
+    state_with_proof21
+        .proof
+        .verify(db2_hash, access_path1.clone(), state_with_proof21.state.as_deref())?;
+    let state_with_proof22 = chain_state_db2.get_with_proof(&access_path2)?;
+    println!("state_with_proof22 {:?}", state_with_proof22);
+    state_with_proof22
+        .proof
+        .verify(db2_hash, access_path2.clone(), state_with_proof22.state.as_deref())?;
 
     Ok(())
 }
