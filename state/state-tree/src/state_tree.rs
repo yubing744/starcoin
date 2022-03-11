@@ -14,6 +14,7 @@ use std::collections::BTreeMap;
 use std::convert::TryInto;
 use std::ops::DerefMut;
 use std::sync::Arc;
+use logger::prelude::debug;
 
 pub struct StateCache<K: RawKey> {
     root_hash: HashValue,
