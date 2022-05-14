@@ -1,16 +1,19 @@
 // Copyright (c) The Starcoin Core Contributors
 // SPDX-License-Identifier: Apache-2.0
 
-use crate::releasement::module;
+pub mod options;
+pub mod releasement;
+
+use releasement::module;
 use clap::Parser;
 use itertools::Itertools;
 use move_binary_format::CompiledModule;
 use move_cli::sandbox::utils::PackageContext;
-use move_cli::Move;
 use move_core_types::resolver::ModuleResolver;
 use starcoin_config::BuiltinNetworkID;
 use starcoin_move_compiler::check_compiled_module_compat;
 use starcoin_transactional_test_harness::remote_state::RemoteStateView;
+
 
 #[derive(Parser)]
 pub struct CompatibilityCheckCommand {
@@ -27,7 +30,7 @@ pub struct CompatibilityCheckCommand {
 }
 
 pub fn handle_compatibility_check(
-    move_args: &Move,
+    move_args: &options::Move,
     cmd: CompatibilityCheckCommand,
 ) -> anyhow::Result<()> {
     let pkg_ctx = PackageContext::new(&move_args.package_path, &move_args.build_config)?;

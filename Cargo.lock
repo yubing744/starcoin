@@ -622,6 +622,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "better_any"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b359aebd937c17c725e19efcb661200883f04c49c53e7132224dac26da39d4a0"
+dependencies = [
+ "better_typeid_derive",
+]
+
+[[package]]
+name = "better_typeid_derive"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3deeecb812ca5300b7d3f66f730cc2ebd3511c3d36c691dd79c165d5b19a26e3"
+dependencies = [
+ "proc-macro2 1.0.36",
+ "quote 1.0.17",
+ "syn 1.0.90",
+]
+
+[[package]]
 name = "bimap"
 version = "0.6.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -822,6 +842,18 @@ name = "byte-tools"
 version = "0.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e3b5ca7a04898ad4bcd41c90c5285445ff5b791899bb1b0abdd2a2aa791211d7"
+
+[[package]]
+name = "bytecode-interpreter-crypto"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "curve25519-dalek-fiat",
+ "ed25519-dalek-fiat",
+ "sha2 0.9.9",
+ "sha3 0.9.1",
+]
 
 [[package]]
 name = "bytecode-interpreter-crypto"
@@ -4904,17 +4936,46 @@ checksum = "c9be0862c1b3f26a88803c4a49de6889c10e608b3ee9344e6ef5b45fb37ad3d1"
 [[package]]
 name = "move-abigen"
 version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "heck 0.3.3",
+ "log 0.4.16",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-abigen"
+version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
  "bcs",
  "heck 0.3.3",
  "log 0.4.16",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-core-types",
- "move-model",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "serde 1.0.136",
+]
+
+[[package]]
+name = "move-binary-format"
+version = "0.0.3"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-core-types 0.0.4",
+ "once_cell",
+ "ref-cast",
+ "serde 1.0.136",
+ "variant_count",
 ]
 
 [[package]]
@@ -4924,7 +4985,7 @@ source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8a
 dependencies = [
  "anyhow",
  "mirai-annotations",
- "move-core-types",
+ "move-core-types 0.0.3",
  "once_cell",
  "proptest",
  "proptest-derive",
@@ -4932,6 +4993,11 @@ dependencies = [
  "serde 1.0.136",
  "variant_count",
 ]
+
+[[package]]
+name = "move-borrow-graph"
+version = "0.0.1"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
 
 [[package]]
 name = "move-borrow-graph"
@@ -4944,16 +5010,43 @@ dependencies = [
 [[package]]
 name = "move-bytecode-source-map"
 version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-bytecode-source-map"
+version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
  "bcs",
- "move-binary-format",
- "move-command-line-common",
- "move-core-types",
- "move-ir-types",
- "move-symbol-pool",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "serde 1.0.136",
+]
+
+[[package]]
+name = "move-bytecode-utils"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "petgraph 0.5.1",
+ "serde-reflection 0.3.5",
 ]
 
 [[package]]
@@ -4962,10 +5055,22 @@ version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
- "move-binary-format",
- "move-core-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
  "petgraph 0.5.1",
  "serde-reflection 0.3.5",
+]
+
+[[package]]
+name = "move-bytecode-verifier"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-borrow-graph 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "petgraph 0.5.1",
 ]
 
 [[package]]
@@ -4975,10 +5080,27 @@ source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8a
 dependencies = [
  "anyhow",
  "mirai-annotations",
- "move-binary-format",
- "move-borrow-graph",
- "move-core-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-borrow-graph 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
  "petgraph 0.5.1",
+]
+
+[[package]]
+name = "move-bytecode-viewer"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "clap 3.1.12",
+ "crossterm 0.21.0",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-disassembler 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "regex",
+ "tui",
 ]
 
 [[package]]
@@ -4989,13 +5111,54 @@ dependencies = [
  "anyhow",
  "clap 3.1.12",
  "crossterm 0.21.0",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-command-line-common",
- "move-disassembler",
- "move-ir-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-disassembler 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "regex",
  "tui",
+]
+
+[[package]]
+name = "move-cli"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "clap 3.1.12",
+ "codespan-reporting",
+ "colored",
+ "difference",
+ "itertools 0.10.3",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-viewer 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-coverage 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-disassembler 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-errmapgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-package 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-prover 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-resource-viewer 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stdlib 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-unit-test 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "once_cell",
+ "read-write-set 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "read-write-set-dynamic 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "serde 1.0.136",
+ "serde_yaml",
+ "tempfile",
+ "walkdir",
 ]
 
 [[package]]
@@ -5010,32 +5173,45 @@ dependencies = [
  "colored",
  "difference",
  "itertools 0.10.3",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-bytecode-utils",
- "move-bytecode-verifier",
- "move-bytecode-viewer",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-coverage 0.1.0",
- "move-disassembler",
- "move-errmapgen",
- "move-ir-types",
- "move-package",
- "move-prover",
- "move-resource-viewer",
- "move-stdlib",
- "move-symbol-pool",
- "move-unit-test",
- "move-vm-runtime",
- "move-vm-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-viewer 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-coverage 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-disassembler 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-errmapgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-package 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-prover 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-resource-viewer 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stdlib 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-unit-test 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
- "read-write-set",
- "read-write-set-dynamic",
+ "read-write-set 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "read-write-set-dynamic 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "serde 1.0.136",
  "serde_yaml",
  "tempfile",
+ "walkdir",
+]
+
+[[package]]
+name = "move-command-line-common"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "difference",
+ "hex",
+ "serde 1.0.136",
+ "sha2 0.9.9",
  "walkdir",
 ]
 
@@ -5055,6 +5231,35 @@ dependencies = [
 [[package]]
 name = "move-compiler"
 version = "0.0.1"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "clap 3.1.12",
+ "codespan-reporting",
+ "difference",
+ "hex",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-borrow-graph 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-to-bytecode 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "num-bigint",
+ "once_cell",
+ "petgraph 0.5.1",
+ "regex",
+ "sha3 0.9.1",
+ "tempfile",
+ "walkdir",
+]
+
+[[package]]
+name = "move-compiler"
+version = "0.0.1"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
@@ -5063,15 +5268,15 @@ dependencies = [
  "codespan-reporting",
  "difference",
  "hex",
- "move-binary-format",
- "move-borrow-graph",
- "move-bytecode-source-map",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-core-types",
- "move-ir-to-bytecode",
- "move-ir-types",
- "move-symbol-pool",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-borrow-graph 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-to-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num-bigint",
  "once_cell",
  "petgraph 0.5.1",
@@ -5101,6 +5306,41 @@ dependencies = [
 ]
 
 [[package]]
+name = "move-core-types"
+version = "0.0.4"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "hex",
+ "once_cell",
+ "rand 0.8.5",
+ "ref-cast",
+ "serde 1.0.136",
+ "serde_bytes",
+]
+
+[[package]]
+name = "move-coverage"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "clap 3.1.12",
+ "codespan 0.11.1",
+ "colored",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "once_cell",
+ "petgraph 0.5.1",
+ "serde 1.0.136",
+]
+
+[[package]]
 name = "move-coverage"
 version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
@@ -5110,11 +5350,11 @@ dependencies = [
  "clap 3.1.12",
  "codespan 0.11.1",
  "colored",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-command-line-common",
- "move-core-types",
- "move-ir-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
  "petgraph 0.5.1",
  "serde 1.0.136",
@@ -5129,12 +5369,30 @@ dependencies = [
  "clap 3.1.12",
  "codespan 0.8.0",
  "colored",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-command-line-common",
- "move-coverage 0.1.0",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-coverage 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "petgraph 0.5.1",
  "serde 1.0.136",
+]
+
+[[package]]
+name = "move-disassembler"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "clap 3.1.12",
+ "colored",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-coverage 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
 ]
 
 [[package]]
@@ -5145,14 +5403,32 @@ dependencies = [
  "anyhow",
  "clap 3.1.12",
  "colored",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-coverage 0.1.0",
- "move-ir-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-coverage 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+]
+
+[[package]]
+name = "move-docgen"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "codespan 0.11.1",
+ "codespan-reporting",
+ "itertools 0.10.3",
+ "log 0.4.16",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "num",
+ "once_cell",
+ "regex",
+ "serde 1.0.136",
 ]
 
 [[package]]
@@ -5165,11 +5441,25 @@ dependencies = [
  "codespan-reporting",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-compiler",
- "move-model",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num",
  "once_cell",
  "regex",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-errmapgen"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "log 0.4.16",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
  "serde 1.0.136",
 ]
 
@@ -5181,9 +5471,9 @@ dependencies = [
  "anyhow",
  "bcs",
  "log 0.4.16",
- "move-command-line-common",
- "move-core-types",
- "move-model",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "serde 1.0.136",
 ]
 
@@ -5195,15 +5485,34 @@ dependencies = [
  "anyhow",
  "bcs",
  "clap 3.1.12",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-core-types",
- "move-ir-to-bytecode",
- "move-ir-types",
- "move-symbol-pool",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-to-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "serde_json",
+]
+
+[[package]]
+name = "move-ir-to-bytecode"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "codespan-reporting",
+ "log 0.4.16",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-to-bytecode-syntax 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "ouroboros",
+ "thiserror",
 ]
 
 [[package]]
@@ -5214,15 +5523,28 @@ dependencies = [
  "anyhow",
  "codespan-reporting",
  "log 0.4.16",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-command-line-common",
- "move-core-types",
- "move-ir-to-bytecode-syntax",
- "move-ir-types",
- "move-symbol-pool",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-to-bytecode-syntax 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "ouroboros",
  "thiserror",
+]
+
+[[package]]
+name = "move-ir-to-bytecode-syntax"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "hex",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
 ]
 
 [[package]]
@@ -5232,10 +5554,24 @@ source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8a
 dependencies = [
  "anyhow",
  "hex",
- "move-command-line-common",
- "move-core-types",
- "move-ir-types",
- "move-symbol-pool",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+]
+
+[[package]]
+name = "move-ir-types"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "hex",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "once_cell",
+ "serde 1.0.136",
 ]
 
 [[package]]
@@ -5245,10 +5581,36 @@ source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8a
 dependencies = [
  "anyhow",
  "hex",
- "move-command-line-common",
- "move-core-types",
- "move-symbol-pool",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-model"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "codespan 0.11.1",
+ "codespan-reporting",
+ "internment",
+ "itertools 0.10.3",
+ "log 0.4.16",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-disassembler 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "num",
+ "once_cell",
+ "regex",
  "serde 1.0.136",
 ]
 
@@ -5263,19 +5625,51 @@ dependencies = [
  "internment",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-disassembler",
- "move-ir-types",
- "move-symbol-pool",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-disassembler 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num",
  "once_cell",
  "regex",
  "serde 1.0.136",
+]
+
+[[package]]
+name = "move-package"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "clap 3.1.12",
+ "colored",
+ "move-abigen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-docgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "named-lock",
+ "once_cell",
+ "petgraph 0.5.1",
+ "ptree",
+ "regex",
+ "serde 1.0.136",
+ "serde_yaml",
+ "sha2 0.9.9",
+ "tempfile",
+ "toml",
+ "walkdir",
 ]
 
 [[package]]
@@ -5287,16 +5681,16 @@ dependencies = [
  "bcs",
  "clap 3.1.12",
  "colored",
- "move-abigen",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-bytecode-utils",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-docgen",
- "move-model",
- "move-symbol-pool",
+ "move-abigen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-docgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "named-lock",
  "once_cell",
  "petgraph 0.5.1",
@@ -5325,18 +5719,18 @@ dependencies = [
  "itertools 0.10.3",
  "jsonrpc-client-transports 18.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "jsonrpc-core-client 18.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-cli",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-coverage 0.1.0",
- "move-disassembler",
- "move-errmapgen",
- "move-package",
- "move-unit-test",
- "move-vm-runtime",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-cli 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-coverage 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-disassembler 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-errmapgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-package 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-unit-test 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
  "once_cell",
  "starcoin-config",
  "starcoin-crypto",
@@ -5358,6 +5752,43 @@ dependencies = [
 [[package]]
 name = "move-prover"
 version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "atty",
+ "clap 3.1.12",
+ "codespan 0.11.1",
+ "codespan-reporting",
+ "futures 0.3.21",
+ "hex",
+ "itertools 0.10.3",
+ "log 0.4.16",
+ "move-abigen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-docgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-errmapgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-prover-boogie-backend 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "num",
+ "once_cell",
+ "pretty",
+ "rand 0.8.5",
+ "serde 1.0.136",
+ "serde_json",
+ "simplelog",
+ "tokio 1.17.0",
+ "toml",
+]
+
+[[package]]
+name = "move-prover"
+version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
@@ -5370,17 +5801,17 @@ dependencies = [
  "hex",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-abigen",
- "move-binary-format",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-docgen",
- "move-errmapgen",
- "move-ir-types",
- "move-model",
- "move-prover-boogie-backend",
- "move-stackless-bytecode",
+ "move-abigen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-docgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-errmapgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-prover-boogie-backend 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num",
  "once_cell",
  "pretty",
@@ -5395,6 +5826,34 @@ dependencies = [
 [[package]]
 name = "move-prover-boogie-backend"
 version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "async-trait",
+ "codespan 0.11.1",
+ "codespan-reporting",
+ "futures 0.3.21",
+ "itertools 0.10.3",
+ "log 0.4.16",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "num",
+ "once_cell",
+ "pretty",
+ "rand 0.8.5",
+ "regex",
+ "serde 1.0.136",
+ "serde_json",
+ "tera",
+ "tokio 1.17.0",
+]
+
+[[package]]
+name = "move-prover-boogie-backend"
+version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
@@ -5404,11 +5863,11 @@ dependencies = [
  "futures 0.3.21",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-binary-format",
- "move-command-line-common",
- "move-core-types",
- "move-model",
- "move-stackless-bytecode",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num",
  "once_cell",
  "pretty",
@@ -5426,9 +5885,20 @@ version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
- "move-command-line-common",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "prettydiff",
  "regex",
+]
+
+[[package]]
+name = "move-read-write-set-types"
+version = "0.0.3"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "serde 1.0.136",
 ]
 
 [[package]]
@@ -5437,8 +5907,23 @@ version = "0.0.3"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
- "move-binary-format",
- "move-core-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-resource-viewer"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "hex",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "once_cell",
  "serde 1.0.136",
 ]
 
@@ -5450,9 +5935,36 @@ dependencies = [
  "anyhow",
  "bcs",
  "hex",
- "move-binary-format",
- "move-core-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
  "once_cell",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-stackless-bytecode"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "codespan 0.11.1",
+ "codespan-reporting",
+ "ethnum",
+ "im",
+ "itertools 0.10.3",
+ "log 0.4.16",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-borrow-graph 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-to-bytecode 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-read-write-set-types 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "num",
+ "once_cell",
+ "paste",
+ "petgraph 0.5.1",
  "serde 1.0.136",
 ]
 
@@ -5467,14 +5979,14 @@ dependencies = [
  "im",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-binary-format",
- "move-borrow-graph",
- "move-bytecode-verifier",
- "move-command-line-common",
- "move-core-types",
- "move-ir-to-bytecode",
- "move-model",
- "move-read-write-set-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-borrow-graph 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-to-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-read-write-set-types 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num",
  "once_cell",
  "paste",
@@ -5485,20 +5997,59 @@ dependencies = [
 [[package]]
 name = "move-stackless-bytecode-interpreter"
 version = "0.1.0"
-source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
 dependencies = [
  "anyhow",
- "bytecode-interpreter-crypto",
+ "bytecode-interpreter-crypto 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
  "clap 3.1.12",
  "codespan-reporting",
  "itertools 0.10.3",
- "move-binary-format",
- "move-core-types",
- "move-model",
- "move-stackless-bytecode",
- "move-vm-runtime",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
  "num",
  "serde 1.0.136",
+]
+
+[[package]]
+name = "move-stackless-bytecode-interpreter"
+version = "0.1.0"
+source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
+dependencies = [
+ "anyhow",
+ "bytecode-interpreter-crypto 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "clap 3.1.12",
+ "codespan-reporting",
+ "itertools 0.10.3",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "num",
+ "serde 1.0.136",
+]
+
+[[package]]
+name = "move-stdlib"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "log 0.4.16",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-docgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-errmapgen 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-prover 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "sha2 0.9.9",
+ "sha3 0.9.1",
+ "smallvec 1.8.0",
+ "walkdir",
 ]
 
 [[package]]
@@ -5507,19 +6058,28 @@ version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "log 0.4.16",
- "move-binary-format",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-docgen",
- "move-errmapgen",
- "move-prover",
- "move-vm-runtime",
- "move-vm-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-docgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-errmapgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-prover 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "sha2 0.9.9",
  "sha3 0.9.1",
  "smallvec 1.8.0",
  "walkdir",
+]
+
+[[package]]
+name = "move-symbol-pool"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "once_cell",
+ "serde 1.0.136",
 ]
 
 [[package]]
@@ -5532,6 +6092,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "move-table-extension"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "bcs",
+ "better_any",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-vm-runtime 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "once_cell",
+ "sha3 0.9.1",
+ "smallvec 1.8.0",
+]
+
+[[package]]
 name = "move-transactional-test-runner"
 version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
@@ -5539,27 +6116,57 @@ dependencies = [
  "anyhow",
  "clap 3.1.12",
  "colored",
- "move-binary-format",
- "move-bytecode-source-map",
- "move-bytecode-utils",
- "move-cli",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-disassembler",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-source-map 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-cli 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-disassembler 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "move-ir-compiler",
- "move-ir-types",
- "move-resource-viewer",
- "move-stackless-bytecode-interpreter",
- "move-stdlib",
- "move-symbol-pool",
- "move-vm-runtime",
- "move-vm-test-utils",
- "move-vm-types",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-resource-viewer 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stackless-bytecode-interpreter 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stdlib 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-test-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
  "rayon",
  "regex",
  "tempfile",
+]
+
+[[package]]
+name = "move-unit-test"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "clap 3.1.12",
+ "codespan-reporting",
+ "colored",
+ "itertools 0.10.3",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-command-line-common 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-compiler 0.0.1 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-ir-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-resource-viewer 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stackless-bytecode-interpreter 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stdlib 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-symbol-pool 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-table-extension",
+ "move-vm-runtime 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-test-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-vm-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "once_cell",
+ "rayon",
+ "regex",
 ]
 
 [[package]]
@@ -5570,20 +6177,37 @@ dependencies = [
  "anyhow",
  "clap 3.1.12",
  "colored",
- "move-binary-format",
- "move-bytecode-utils",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-model",
- "move-resource-viewer",
- "move-stackless-bytecode-interpreter",
- "move-stdlib",
- "move-vm-runtime",
- "move-vm-test-utils",
- "move-vm-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-resource-viewer 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stackless-bytecode-interpreter 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stdlib 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-test-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "rayon",
  "regex",
+]
+
+[[package]]
+name = "move-vm-runtime"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "better_any",
+ "fail",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-vm-types 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "once_cell",
+ "parking_lot 0.11.2",
+ "sha3 0.9.1",
+ "tracing",
 ]
 
 [[package]]
@@ -5593,10 +6217,10 @@ source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8a
 dependencies = [
  "fail",
  "mirai-annotations",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-core-types",
- "move-vm-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
  "parking_lot 0.11.2",
  "sha3 0.9.1",
@@ -5606,12 +6230,34 @@ dependencies = [
 [[package]]
 name = "move-vm-test-utils"
 version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-core-types 0.0.4",
+]
+
+[[package]]
+name = "move-vm-test-utils"
+version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
- "move-binary-format",
- "move-core-types",
- "move-vm-runtime",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+]
+
+[[package]]
+name = "move-vm-types"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "bcs",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "once_cell",
+ "serde 1.0.136",
+ "smallvec 1.8.0",
 ]
 
 [[package]]
@@ -5621,8 +6267,8 @@ source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8a
 dependencies = [
  "bcs",
  "mirai-annotations",
- "move-binary-format",
- "move-core-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
  "once_cell",
  "serde 1.0.136",
  "smallvec 1.8.0",
@@ -7535,16 +8181,43 @@ dependencies = [
 [[package]]
 name = "read-write-set"
 version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-model 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-read-write-set-types 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "read-write-set-dynamic 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+]
+
+[[package]]
+name = "read-write-set"
+version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
- "move-binary-format",
- "move-bytecode-utils",
- "move-core-types",
- "move-model",
- "move-read-write-set-types",
- "move-stackless-bytecode",
- "read-write-set-dynamic",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-read-write-set-types 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stackless-bytecode 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "read-write-set-dynamic 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+]
+
+[[package]]
+name = "read-write-set-dynamic"
+version = "0.1.0"
+source = "git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294#16ad859f0342b7dbf8cb9b98f8ded90214ab0294"
+dependencies = [
+ "anyhow",
+ "move-binary-format 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
+ "move-core-types 0.0.4",
+ "move-read-write-set-types 0.0.3 (git+https://github.com/move-language/move?rev=16ad859f0342b7dbf8cb9b98f8ded90214ab0294)",
 ]
 
 [[package]]
@@ -7553,10 +8226,10 @@ version = "0.1.0"
 source = "git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1#8d559a83d5372d633fc7d85e8ae29c80d9d45dc1"
 dependencies = [
  "anyhow",
- "move-binary-format",
- "move-bytecode-utils",
- "move-core-types",
- "move-read-write-set-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-utils 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-read-write-set-types 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
 ]
 
 [[package]]
@@ -8795,7 +9468,7 @@ dependencies = [
  "bcs",
  "bcs-ext",
  "hex",
- "move-binary-format",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "schemars 0.8.8 (git+https://github.com/starcoinorg/schemars?rev=6972da92f4360e1779168bb3fe0274c521d324e2)",
  "serde 1.0.136",
  "serde_bytes",
@@ -8811,7 +9484,7 @@ name = "starcoin-abi-resolver"
 version = "1.11.7-rc"
 dependencies = [
  "anyhow",
- "move-model",
+ "move-model 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "serde_json",
  "starcoin-abi-types",
  "starcoin-resource-viewer",
@@ -9102,8 +9775,8 @@ dependencies = [
  "futures 0.3.21",
  "hex",
  "itertools 0.10.3",
- "move-command-line-common",
- "move-errmapgen",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-errmapgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "network-api",
  "network-p2p-types",
  "rand 0.8.5",
@@ -9591,9 +10264,9 @@ version = "1.11.7-rc"
 dependencies = [
  "anyhow",
  "itertools 0.10.3",
- "move-binary-format",
- "move-command-line-common",
- "move-compiler",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
  "petgraph 0.5.1",
  "rayon",
@@ -9612,7 +10285,7 @@ version = "1.11.7-rc"
 dependencies = [
  "bcs-ext",
  "clap 3.1.12",
- "move-core-types",
+ "move-core-types 0.0.3",
  "stdlib",
 ]
 
@@ -9628,8 +10301,8 @@ dependencies = [
  "hex",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-command-line-common",
- "move-prover",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-prover 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "move-prover-test-utils",
  "num",
  "once_cell",
@@ -9652,15 +10325,15 @@ dependencies = [
  "hex",
  "libsecp256k1",
  "log 0.4.16",
- "move-binary-format",
- "move-command-line-common",
- "move-core-types",
- "move-docgen",
- "move-errmapgen",
- "move-prover",
- "move-stdlib",
- "move-vm-runtime",
- "move-vm-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-docgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-errmapgen 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-prover 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-stdlib 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num_enum",
  "rand 0.8.5",
  "ripemd160",
@@ -9918,8 +10591,8 @@ version = "1.11.7-rc"
 dependencies = [
  "anyhow",
  "hex",
- "move-binary-format",
- "move-core-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
  "serde 1.0.136",
  "serde_json",
  "starcoin-vm-types",
@@ -10374,11 +11047,11 @@ dependencies = [
  "jsonrpc-client-transports 18.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "jsonrpc-core-client 18.0.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "log 0.4.16",
- "move-binary-format",
- "move-command-line-common",
- "move-compiler",
- "move-core-types",
- "move-resource-viewer",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-command-line-common 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-resource-viewer 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "move-transactional-test-runner",
  "once_cell",
  "serde 1.0.136",
@@ -10534,9 +11207,9 @@ version = "1.11.7-rc"
 dependencies = [
  "anyhow",
  "bcs-ext",
- "move-core-types",
- "move-stdlib",
- "move-vm-runtime",
+ "move-core-types 0.0.3",
+ "move-stdlib 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-runtime 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num_enum",
  "once_cell",
  "rand 0.8.5",
@@ -10565,11 +11238,11 @@ dependencies = [
  "hex",
  "log 0.4.16",
  "mirai-annotations",
- "move-binary-format",
- "move-bytecode-verifier",
- "move-core-types",
- "move-ir-types",
- "move-vm-types",
+ "move-binary-format 0.0.3 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-core-types 0.0.3",
+ "move-ir-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-vm-types 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "num_enum",
  "once_cell",
  "proptest",
@@ -10628,9 +11301,9 @@ dependencies = [
  "include_dir",
  "itertools 0.10.3",
  "log 0.4.16",
- "move-bytecode-verifier",
- "move-compiler",
- "move-prover",
+ "move-bytecode-verifier 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-compiler 0.0.1 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
+ "move-prover 0.1.0 (git+https://github.com/starcoinorg/move?rev=8d559a83d5372d633fc7d85e8ae29c80d9d45dc1)",
  "once_cell",
  "serde 1.0.136",
  "sha2 0.10.2",
@@ -11621,7 +12294,7 @@ dependencies = [
  "bcs",
  "clap 3.1.12",
  "heck 0.3.3",
- "move-core-types",
+ "move-core-types 0.0.3",
  "regex",
  "serde-generate",
  "serde-reflection 0.3.2",
